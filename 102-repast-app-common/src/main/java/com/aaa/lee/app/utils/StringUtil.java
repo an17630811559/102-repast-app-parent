@@ -12,6 +12,7 @@ import java.util.Random;
 public class StringUtil {
     /**
      * MD5
+     *
      * @param str
      * @return
      */
@@ -35,7 +36,7 @@ public class StringUtil {
         return returnStr;
     }
 
-    /**
+    /**00
      * 去除字符串两边的空格并处理空字符串
      *
      * @param str 输入字符串
@@ -103,7 +104,7 @@ public class StringUtil {
         if (decByte == null)
             return "";
         String str = "";
-        try {
+        try {   //sun.misc.BASE64Encoder().encodeBuffer(decByte);
             str = new sun.misc.BASE64Encoder().encodeBuffer(decByte);
         } catch (Exception e) {
             str = "";
