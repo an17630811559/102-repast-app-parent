@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
  * @Date Create in 2019/12/18 16:09
  * @Description
  *      统一使用该controller返回
- *      也就是说以后所有的controller都不必须要继承BaseController
+ *      也就是说以后所有的controller都必须要继承BaseController
  **/
 @Controller
 public class BaseController {

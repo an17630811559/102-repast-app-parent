@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
  * @Author Seven Lee
  * @Date Create in 2019/12/18 16:17
  * @Description
+ *      PropertySource加载*.properties的文件
  **/
 //@Component
 //@PropertySource("classpath:config/redis.properties")
