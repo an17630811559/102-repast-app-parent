@@ -10,4 +10,10 @@ public class StaticProperties {
 
     public static final String OK = "OK";
 
+    public static final String CODE = "code";
+    public static final String MSG = "msg";
+    public static final String DATA = "data";
+
+
+
 }
