@@ -86,7 +86,8 @@ public class StringUtil {
                 // 取得大写字母还是小写字母
                 int choice = random.nextInt(2) % 2 == 0 ? 65 : 97;
                 str += (char) (choice + random.nextInt(26));
-            } else if ("num".equalsIgnoreCase(charOrNum)) { // 数字
+            } else if ("num".equalsIgnoreCase(charOrNum)) {
+                // 数字
                 str += String.valueOf(random.nextInt(10));
             }
         }
@@ -101,8 +102,8 @@ public class StringUtil {
      * @throws Exception
      */
     public static final String byteToBase64(byte[] decByte) throws Exception {
-        if (decByte == null)
-            return "";
+        if (decByte == null){
+            return "";}
         String str = "";
         try {   //sun.misc.BASE64Encoder().encodeBuffer(decByte);
             str = new sun.misc.BASE64Encoder().encodeBuffer(decByte);

@@ -1,5 +1,6 @@
 package com.aaa.lee.app.utils;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -94,9 +95,25 @@ public class DateUtil {
      *
      * @return
      */
-    public static final String getDateNow() {
+    public static final String getStringDateNow() {
         return formatDate(new Date());
     }
+
+    /**
+     * 获取当前系统时间  返回data类型
+     */
+    public static final Date getDateNow() {
+        String s = formatDate(new Date());
+        SimpleDateFormat dateFormat=new SimpleDateFormat(DATE_TIME_TYPE);
+        Date date ;
+        try {
+             date=dateFormat.parse(s);
+        }catch (ParseException px){
+            return null;
+        }
+        return date;
+    }
+
 
     /**
      * 获取当前年度
