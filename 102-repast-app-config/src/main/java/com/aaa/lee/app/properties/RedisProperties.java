@@ -18,8 +18,8 @@ import org.springframework.stereotype.Component;
 //@Data
 public class RedisProperties {
 
-    private String nodes;
+    /*private String nodes;
     private String maxAttempts;
-    private String commandTimeout;
+    private String commandTimeout;*/
 
 }
