@@ -15,7 +15,12 @@ public enum  LoginStatus {
     PASSWORD_WRONG("405", "密码错误"),
     LOGOUT_WRONG("403", "用户退出异常"),
     USER_HAS_PERMISSION("202", "用户拥有登录权限"),
+    ADD_CART("300","添加购物车成功"),
+    ADD_NOT_CART("500","添加购物车失败"),
+    SKU_NOT_CART("501","你购买的商品库存不足"),
     USER_HAS_NOT_PERMISSION("406", "用户没有登录权限");
+
+
 
     LoginStatus(String code, String msg) {
         this.code = code;

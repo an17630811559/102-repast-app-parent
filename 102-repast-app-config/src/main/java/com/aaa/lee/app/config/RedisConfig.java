@@ -18,24 +18,24 @@ import java.util.Set;
  * @Description
  *      只能使用@Configuration不能使用@SpringBootApplication注解
  **/
-@Configuration
+//@Configuration
 public class RedisConfig {
-
-    @Autowired
-    private RedisProperties redisProperties;
-
-    @Bean
-    public JedisCluster jedisCluster() throws IOException {
-        String nodes = redisProperties.getNodes() ;
-        String[] split = nodes.split(",");
-        Set<HostAndPort> hostAndPortSet = new HashSet<HostAndPort>();
-        for (String hostPort : split) {
-            String[] split1 = hostPort.split(":");
-            HostAndPort hostAndPort = new HostAndPort(split1[0], Integer.parseInt(split1[1]));
-            hostAndPortSet.add(hostAndPort);
-        }
-        JedisCluster jedisCluster = new JedisCluster(hostAndPortSet, Integer.parseInt(redisProperties.getCommandTimeout()), Integer.parseInt(redisProperties.getMaxAttempts()));
-        return jedisCluster;
-    }
+//
+//    @Autowired
+//    private RedisProperties redisProperties;
+//
+//    @Bean
+//    public JedisCluster jedisCluster() throws IOException {
+//        String nodes = redisProperties.getNodes() ;
+//        String[] split = nodes.split(",");
+//        Set<HostAndPort> hostAndPortSet = new HashSet<HostAndPort>();
+//        for (String hostPort : split) {
+//            String[] split1 = hostPort.split(":");
+//            HostAndPort hostAndPort = new HostAndPort(split1[0], Integer.parseInt(split1[1]));
+//            hostAndPortSet.add(hostAndPort);
+//        }
+//        JedisCluster jedisCluster = new JedisCluster(hostAndPortSet, Integer.parseInt(redisProperties.getCommandTimeout()), Integer.parseInt(redisProperties.getMaxAttempts()));
+//        return jedisCluster;
+//    }
 
 }

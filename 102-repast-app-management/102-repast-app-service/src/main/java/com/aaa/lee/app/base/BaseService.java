@@ -7,6 +7,7 @@ import org.apache.ibatis.session.RowBounds;
 import tk.mybatis.mapper.common.Mapper;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Company AAA软件教育
@@ -16,6 +17,7 @@ import java.util.List;
  *      所有的service都必须要依赖于baseService(只要是简单的单表增删改查都不再需要写了，直接调用即可)
  *      就算是单表的增删改查也必须要用mapper
  **/
+
 public abstract class BaseService<T> {
 
     /**
