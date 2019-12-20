@@ -226,7 +226,7 @@ public class OmsOrder {
     private String note;
 
     /**
-     * 确认收货状态：0->未确认；1->已确认
+     * 确认收货状态：0->未确认；1->已确认 ;2 -> 退款中
      */
     @Column(name = "confirm_status")
     private Integer confirmStatus;
@@ -950,18 +950,18 @@ public class OmsOrder {
     }
 
     /**
-     * 获取确认收货状态：0->未确认；1->已确认
+     * 获取确认收货状态：0->未确认；1->已确认 ;2 -> 退款中
      *
-     * @return confirm_status - 确认收货状态：0->未确认；1->已确认
+     * @return confirm_status - 确认收货状态：0->未确认；1->已确认 ;2 -> 退款中
      */
     public Integer getConfirmStatus() {
         return confirmStatus;
     }
 
     /**
-     * 设置确认收货状态：0->未确认；1->已确认
+     * 设置确认收货状态：0->未确认；1->已确认 ;2 -> 退款中
      *
-     * @param confirmStatus 确认收货状态：0->未确认；1->已确认
+     * @param confirmStatus 确认收货状态：0->未确认；1->已确认 ;2 -> 退款中
      */
     public void setConfirmStatus(Integer confirmStatus) {
         this.confirmStatus = confirmStatus;

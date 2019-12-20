@@ -20,6 +20,9 @@ public class OmsOrderReturnReason {
      */
     private String name;
 
+    /**
+     * 排序
+     */
     private Integer sort;
 
     /**
@@ -84,14 +87,18 @@ public class OmsOrderReturnReason {
     }
 
     /**
-     * @return sort
+     * 获取排序
+     *
+     * @return sort - 排序
      */
     public Integer getSort() {
         return sort;
     }
 
     /**
-     * @param sort
+     * 设置排序
+     *
+     * @param sort 排序
      */
     public void setSort(Integer sort) {
         this.sort = sort;

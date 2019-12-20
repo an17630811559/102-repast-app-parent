@@ -12,6 +12,9 @@ public class PmsMemberPrice {
     @Column(name = "shop_id")
     private Long shopId;
 
+    /**
+     * 产品id
+     */
     @Column(name = "product_id")
     private Long productId;
 
@@ -56,14 +59,18 @@ public class PmsMemberPrice {
     }
 
     /**
-     * @return product_id
+     * 获取产品id
+     *
+     * @return product_id - 产品id
      */
     public Long getProductId() {
         return productId;
     }
 
     /**
-     * @param productId
+     * 设置产品id
+     *
+     * @param productId 产品id
      */
     public void setProductId(Long productId) {
         this.productId = productId;

@@ -19,7 +19,7 @@ public class OmsOrderOperateHistory {
     private Long shopId;
 
     /**
-     * 操作人：用户；系统；后台管理员
+     * 操作人：0:用户；1:系统；2:后台管理员
      */
     @Column(name = "operate_man")
     private String operateMan;
@@ -88,18 +88,18 @@ public class OmsOrderOperateHistory {
     }
 
     /**
-     * 获取操作人：用户；系统；后台管理员
+     * 获取操作人：0:用户；1:系统；2:后台管理员
      *
-     * @return operate_man - 操作人：用户；系统；后台管理员
+     * @return operate_man - 操作人：0:用户；1:系统；2:后台管理员
      */
     public String getOperateMan() {
         return operateMan;
     }
 
     /**
-     * 设置操作人：用户；系统；后台管理员
+     * 设置操作人：0:用户；1:系统；2:后台管理员
      *
-     * @param operateMan 操作人：用户；系统；后台管理员
+     * @param operateMan 操作人：0:用户；1:系统；2:后台管理员
      */
     public void setOperateMan(String operateMan) {
         this.operateMan = operateMan == null ? null : operateMan.trim();

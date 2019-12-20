@@ -30,9 +30,15 @@ public class OmsOrderItem {
     @Column(name = "product_name")
     private String productName;
 
+    /**
+     * 品牌
+     */
     @Column(name = "product_brand")
     private String productBrand;
 
+    /**
+     * 产品序列号
+     */
     @Column(name = "product_sn")
     private String productSn;
 
@@ -210,28 +216,36 @@ public class OmsOrderItem {
     }
 
     /**
-     * @return product_brand
+     * 获取品牌
+     *
+     * @return product_brand - 品牌
      */
     public String getProductBrand() {
         return productBrand;
     }
 
     /**
-     * @param productBrand
+     * 设置品牌
+     *
+     * @param productBrand 品牌
      */
     public void setProductBrand(String productBrand) {
         this.productBrand = productBrand == null ? null : productBrand.trim();
     }
 
     /**
-     * @return product_sn
+     * 获取产品序列号
+     *
+     * @return product_sn - 产品序列号
      */
     public String getProductSn() {
         return productSn;
     }
 
     /**
-     * @param productSn
+     * 设置产品序列号
+     *
+     * @param productSn 产品序列号
      */
     public void setProductSn(String productSn) {
         this.productSn = productSn == null ? null : productSn.trim();
