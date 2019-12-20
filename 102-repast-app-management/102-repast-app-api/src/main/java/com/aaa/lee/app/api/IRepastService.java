@@ -1,11 +1,12 @@
 package com.aaa.lee.app.api;
 
 import com.aaa.lee.app.fallback.RepastFallback;
-import com.aaa.lee.app.model.Member;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Map;
 
 /**
  * @Company AAA软件教育
@@ -18,16 +19,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(value = "userinfo-interface-provider", fallbackFactory = RepastFallback.class)
 public interface IRepastService {
 
+
     /**
-     * @author Seven Lee
+     * @author awb
      * @description
-     *      登录熔断数据
-     * @param [member]
-     * @date 2019/12/19
-     * @return java.lang.Boolean
-     * @throws 
-    **/
-    @PostMapping("/doLogin")
-    Boolean doLogin(@RequestBody Member member);
+     *          结算
+     * @date create in 11:04 2019/12/20
+     * @param
+     * @return
+    */
+    @PostMapping("/checkOut")
+    Map<Object,Object> checkOutCart(String token, Map<Object, Object> map);
 
 }

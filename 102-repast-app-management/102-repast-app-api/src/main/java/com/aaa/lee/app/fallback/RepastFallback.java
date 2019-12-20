@@ -5,6 +5,8 @@ import com.aaa.lee.app.model.Member;
 import feign.hystrix.FallbackFactory;
 import org.springframework.stereotype.Component;
 
+import java.util.Map;
+
 /**
  * @Company AAA软件教育
  * @Author Seven Lee
@@ -18,9 +20,10 @@ public class RepastFallback implements FallbackFactory<IRepastService> {
     public IRepastService create(Throwable throwable) {
         IRepastService repastService = new IRepastService() {
 
+
             @Override
-            public Boolean doLogin(Member member) {
-                System.out.println("测试登录熔断数据");
+            public Map<Object, Object> checkOutCart(String token, Map<Object, Object> map) {
+                System.out.println("结算熔断数据");
                 return null;
             }
         };
