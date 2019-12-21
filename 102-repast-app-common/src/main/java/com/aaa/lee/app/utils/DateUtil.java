@@ -107,7 +107,7 @@ public class DateUtil {
         SimpleDateFormat dateFormat=new SimpleDateFormat(DATE_TIME_TYPE);
         Date date ;
         try {
-             date=dateFormat.parse(s);
+            date=dateFormat.parse(s);
         }catch (ParseException px){
             return null;
         }

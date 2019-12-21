@@ -1,7 +1,6 @@
 package com.aaa.lee.app.fallback;
 
 import com.aaa.lee.app.api.IRepastService;
-import com.aaa.lee.app.model.Member;
 import feign.hystrix.FallbackFactory;
 import org.springframework.stereotype.Component;
 
@@ -22,7 +21,7 @@ public class RepastFallback implements FallbackFactory<IRepastService> {
 
 
             @Override
-            public Map<Object, Object> checkOutCart(String token, Map<Object, Object> map) {
+            public Map<Object, Object> checkOutCart(String token, String json) {
                 System.out.println("结算熔断数据");
                 return null;
             }

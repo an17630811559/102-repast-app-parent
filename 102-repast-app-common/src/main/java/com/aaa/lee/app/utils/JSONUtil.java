@@ -15,7 +15,8 @@ import java.util.List;
 public class JSONUtil {
 
     // 1.定义私有静态常量ObjectMapper(命名规则：所有字母全部大写，单词与单词之间使用_连接)
-        // ObjectMapper:就是fastjson包中进行类型转换的工具类
+    // ObjectMapper:就是fastjson包中进行类型转换的工具类
+
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     /**
