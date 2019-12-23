@@ -32,7 +32,7 @@ public class ScheduledTask {
     @Scheduled(cron ="0/60 * * * * *")
     public void run(){
         List<OmsOrder> omsOrders = omsOrderMapper.selectAll();
-        if(null==omsOrders&&omsOrders.size()>0) {
+        if(null!=omsOrders&&omsOrders.size()>0) {
             for (OmsOrder oo : omsOrders) {
                 if (null == oo.getPaymentTime()) {
                     Date createTime = oo.getCreateTime();
