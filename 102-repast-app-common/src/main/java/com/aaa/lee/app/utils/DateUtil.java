@@ -122,4 +122,22 @@ public class DateUtil {
     public static int getCurrentYear() {
         return Calendar.getInstance().get(Calendar.YEAR);
     }
+
+    /**
+     * 判断两个时间相差数是否大于30分钟
+     *
+     * 如果 5:00下的单 +30 <  5.10分
+     */
+    public static  boolean  checkDate(Date beginTime,Date endTime){
+        if (null==beginTime || null== endTime){
+            return false;
+        }
+        long time1 = beginTime.getTime();
+        long time2 = endTime.getTime();
+        if (time2>(time1+1800000)){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
