@@ -91,7 +91,7 @@ public class DateUtil {
     }
 
     /**
-     * 获取系统当前时间
+     * 获取系统当前时间  返回string 类型
      *
      * @return
      */
@@ -122,6 +122,7 @@ public class DateUtil {
     public static int getCurrentYear() {
         return Calendar.getInstance().get(Calendar.YEAR);
     }
+
 
     /**
      * 判断两个时间相差数是否大于30分钟

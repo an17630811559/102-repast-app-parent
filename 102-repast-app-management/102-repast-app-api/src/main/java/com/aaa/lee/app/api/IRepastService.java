@@ -4,8 +4,8 @@ import com.aaa.lee.app.fallback.RepastFallback;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Map;
 
@@ -18,6 +18,7 @@ import java.util.Map;
  *      但是如果是包装类型，只能传递一个，也必须要用@RequestBody
  **/
 @FeignClient(value = "order-interface-provider", fallbackFactory = RepastFallback.class)
+@RequestMapping("/provider")
 public interface IRepastService {
 
 
@@ -32,4 +33,10 @@ public interface IRepastService {
     @PostMapping("/checkOut")
     Map<Object,Object>  checkOutCart(@RequestParam("token") String token,@RequestParam("json") String json);
 
+
+    @PostMapping("/selectMyOrder")
+    String selectAllOrder(@RequestParam("token") String token,@RequestBody Map<String, Object> map);
+
+    @PostMapping("/selectMyOrderById")
+    String selectByOrderId(@RequestParam("token") String token,@RequestBody Map<String, Object> map);
 }

@@ -1,15 +1,12 @@
 package com.aaa.lee.app.controller;
 
 import com.aaa.lee.app.service.CheckOutService;
-import com.aaa.lee.app.staticproperties.StaticProperties;
-import com.aaa.lee.app.status.LoginStatus;
-import com.aaa.lee.app.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -18,6 +15,7 @@ import java.util.Map;
  * @date create in 19:14 2019/12/19
  */
 @RestController
+@RequestMapping("/provider")
 public class CheckOutController {
 
     @Autowired
@@ -36,14 +34,8 @@ public class CheckOutController {
     */
     @PostMapping("/checkOut")
     public Map<Object,Object> checkOutCart(@RequestParam("token") String token, @RequestParam("json")String json){
-        if (StringUtil.isEmpty(token)){
-            Map<Object,Object> tokenNull=new HashMap<Object, Object>(16);
-            tokenNull.put(StaticProperties.CODE,LoginStatus.LOGIN_FAILED.getCode());
-            tokenNull.put(StaticProperties.MSG,LoginStatus.LOGIN_FAILED.getMsg());
-            return tokenNull;
-        }
-        Map<Object, Object> result = checkOutService.checkOutCart(token, json);
-        return result;
+
+        return checkOutService.checkOutCart(token, json);
     }
 
 
