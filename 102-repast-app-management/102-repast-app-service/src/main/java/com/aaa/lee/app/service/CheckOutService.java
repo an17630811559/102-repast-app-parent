@@ -44,6 +44,10 @@ public class CheckOutService extends BaseService<OmsOrder> {
     @Autowired
     private OmsOrderOperateHistoryMapper omsOrderOperateHistoryMapper;
 
+    @Autowired
+    private RestUtils restUtils;
+
+
     @Override
     public Mapper<OmsOrder> getMapper() {
         return omsOrderMapper;
@@ -66,7 +70,7 @@ public class CheckOutService extends BaseService<OmsOrder> {
         List<Map<String,Object>> product = (List) map.get("product");
 
         //远程调用 获取用户信息
-        UmsMember umsMember = RestUtils.getUser(token);
+        UmsMember umsMember = restUtils.getUser(token);
 
         //查询库存
         //TODO

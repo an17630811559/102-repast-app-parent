@@ -13,4 +13,5 @@
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="type" property="type" jdbcType="INTEGER" />
   </resultMap>
+
 </mapper>
