@@ -18,6 +18,8 @@ import com.aaa.lee.app.utils.JSONUtil;
 import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 import tk.mybatis.mapper.common.Mapper;
 
@@ -33,6 +35,7 @@ import java.util.Map;
  * @date create in 19:16 2019/12/19
  */
 @Service
+@Transactional
 public class CheckOutService extends BaseService<OmsOrder> {
 
     @Autowired
@@ -73,7 +76,7 @@ public class CheckOutService extends BaseService<OmsOrder> {
         UmsMember umsMember = restUtils.getUser(token);
 
         //查询库存
-        //TODO
+        //TODO 查询库存接口未完成
 
         //生成订单id
         String orderId = IDUtil.getUUID();
@@ -91,6 +94,7 @@ public class CheckOutService extends BaseService<OmsOrder> {
                         .setReceiverName("待更新")
                         .setReceiverPhone("待更新")
                         .setDeleteStatus(0)
+                        .setMemberUsername(umsMember.getUsername())
         );
         //添加订单详情表  因为订单中的商品不止有一个  所以for循环
         for (Map<String,Object> pd :product){
@@ -116,7 +120,7 @@ public class CheckOutService extends BaseService<OmsOrder> {
         //添加订单历史表
         omsOrderOperateHistoryMapper.insert(
                 new OmsOrderOperateHistory().setId(null)
-                            .setOrderId(null)
+                            .setOrderId(orderId)
                             .setShopId(map.get("shop_id") == null ? null : Long.valueOf(map.get("shop_id").toString()))
                             .setOperateMan("0")
                             .setCreateTime(date)

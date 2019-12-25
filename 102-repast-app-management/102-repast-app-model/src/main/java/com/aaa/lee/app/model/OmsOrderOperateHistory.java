@@ -22,7 +22,7 @@ public class OmsOrderOperateHistory {
      * 订单id
      */
     @Column(name = "order_id")
-    private Long orderId;
+    private String orderId;
 
     @Column(name = "shop_id")
     private Long shopId;
