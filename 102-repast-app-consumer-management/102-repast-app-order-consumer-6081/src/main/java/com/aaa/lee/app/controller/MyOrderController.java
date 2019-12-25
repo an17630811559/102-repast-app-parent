@@ -29,8 +29,7 @@ public class MyOrderController extends BaseController {
     public String selectAllOrder(@RequestBody Map<String, Object> map){
         if (!map.isEmpty()){
             String token=null==map.get("token")?"":map.get("token").toString();
-            String s = repastService.selectAllOrder(token,map);
-            return s;
+            return repastService.selectAllOrder(token,map);
         }
         return "";
     }
@@ -40,8 +39,7 @@ public class MyOrderController extends BaseController {
     public String selectMyOrderById(@RequestBody Map<String, Object> map){
         if (!map.isEmpty()){
             String token=null==map.get("token")?"":map.get("token").toString();
-            String s = repastService.selectByOrderId(token,map);
-            return  s;
+            return repastService.selectByOrderId(token,map);
         }
         return "";
     }

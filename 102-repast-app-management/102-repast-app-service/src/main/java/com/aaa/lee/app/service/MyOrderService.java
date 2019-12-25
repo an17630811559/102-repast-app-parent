@@ -20,6 +20,8 @@ import com.aaa.lee.app.vo.OrderInfo;
 import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 import tk.mybatis.mapper.common.Mapper;
 
@@ -35,6 +37,7 @@ import java.util.Map;
  * @date create in 19:16 2019/12/19
  */
 @Service
+@Transactional
 public class MyOrderService extends BaseService<OmsOrder> {
 
     @Autowired
@@ -42,9 +45,6 @@ public class MyOrderService extends BaseService<OmsOrder> {
 
     @Autowired
     private OmsOrderItemMapper omsOrderItemMapper;
-
-    @Autowired
-    private OmsOrderOperateHistoryMapper omsOrderOperateHistoryMapper;
 
     @Autowired
     private RestUtils restUtils;
