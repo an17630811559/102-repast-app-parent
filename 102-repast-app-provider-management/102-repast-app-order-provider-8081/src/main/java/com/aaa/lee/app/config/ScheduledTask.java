@@ -31,7 +31,8 @@ public class ScheduledTask {
     */
     @Scheduled(cron ="0/60 * * * * *")
     public void run(){
-        List<OmsOrder> omsOrders = omsOrderMapper.selectAll();
+        OmsOrder omsOrder = new OmsOrder();
+        List<OmsOrder> omsOrders = omsOrderMapper.select(omsOrder.setStatus(0));
         if(null!=omsOrders&&omsOrders.size()>0) {
             for (OmsOrder oo : omsOrders) {
                 if (null == oo.getPaymentTime()) {
@@ -39,6 +40,31 @@ public class ScheduledTask {
                     Date dateNow = DateUtil.getDateNow();
                     if (DateUtil.checkDate(createTime, dateNow)) {
                         oo.setDeleteStatus(1);
+                        omsOrderMapper.updateByPrimaryKeySelective(oo);
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * @author awb
+     * @description
+     *  定时收货  每天0点触发
+     * @date create in 14:43 2019/12/30
+     * @param
+     * @return
+    */
+    @Scheduled(cron ="0 0 0 * * ?")
+    public void take(){
+        OmsOrder omsOrder = new OmsOrder();
+        List<OmsOrder> omsOrders = omsOrderMapper.select(omsOrder.setStatus(2));
+        if(null!=omsOrders&&omsOrders.size()>0) {
+            for (OmsOrder oo : omsOrders) {
+                if (null == oo.getReceiveTime()) {
+                    if (DateUtil.autoTake(oo.getReceiveTime(), oo.getAutoConfirmDay())) {
+                        //确认收货
+                        oo.setConfirmStatus(1).setReceiveTime(DateUtil.getDateNow());
                         omsOrderMapper.updateByPrimaryKeySelective(oo);
                     }
                 }

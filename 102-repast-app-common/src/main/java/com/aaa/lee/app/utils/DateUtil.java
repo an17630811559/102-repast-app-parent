@@ -141,4 +141,23 @@ public class DateUtil {
             return false;
         }
     }
+
+
+    /**
+     * 自动收货
+     */
+    public static  boolean  autoTake(Date beginTime,int autoConfirmDay){
+        if (null==beginTime){
+            return false;
+        }
+        long time1 = beginTime.getTime();
+        long time2 = autoConfirmDay*86400000;
+        long nowTime=getDateNow().getTime();
+        if (nowTime-(time2+time1)>0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }

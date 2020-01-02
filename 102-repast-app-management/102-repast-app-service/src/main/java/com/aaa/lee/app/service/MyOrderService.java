@@ -98,7 +98,7 @@ public class MyOrderService extends BaseService<OmsOrder> {
      * @return
      */
     public Map<String,Object> selectOrderById(Map<String, Object> map) {
-        HashMap<String, Object> result = new HashMap<String, Object>();
+        HashMap<String, Object> result = new HashMap<String, Object>(16);
         String orderSn = null == map.get("orderSn") ? null : map.get("orderSn").toString();
 
         //判断订单编号是否为空
@@ -109,12 +109,7 @@ public class MyOrderService extends BaseService<OmsOrder> {
             result.put(StaticProperties.DATA,orderInfo);
             return result;
         }
-
-
         return null;
     }
-
-
-
 
 }
