@@ -1,12 +1,16 @@
 package com.aaa.lee.app.util;
 
+import com.aaa.lee.app.model.OmsCartItem;
+import com.aaa.lee.app.model.PmsProduct;
 import com.aaa.lee.app.model.UmsMember;
 import com.aaa.lee.app.utils.JSONUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -23,6 +27,7 @@ public class RestUtils {
 
     /**
      * 根据token查询用户信息
+     *
      * @param token
      * @return
      */
@@ -42,4 +47,61 @@ public class RestUtils {
         }
         return umsMember;
     }
+
+    /**
+     * 远程调用 添加库存方法
+     * @param
+     * @param
+     * @return
+     */
+    public  boolean updateAddSku(OmsCartItem omsCartItem) {
+        List<OmsCartItem> list = new ArrayList<>();
+        list.add(omsCartItem);
+        Boolean aBoolean = restTemplate.postForObject("http://192.168.1.13:6086/addStock", list, boolean.class);
+        if (aBoolean){
+            return true;
+        }
+        return false;
+    }
+    /**
+     * 远程调用 添加库存方法
+     * @param
+     * @param
+     * @return
+     */
+    public  boolean deleteAllCart(List<OmsCartItem> omsCartItem) {
+        Boolean aBoolean = restTemplate.postForObject("http://192.168.1.13:6086/addStock", omsCartItem, boolean.class);
+        if (aBoolean){
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 远程调用 减少库存方法
+     * @param
+     * @param
+     * @return
+     */
+    public  boolean updatedeleteSku(OmsCartItem omsCartItem) {
+        List<OmsCartItem> list = new ArrayList<>();
+        list.add(omsCartItem);
+        Boolean aBoolean = restTemplate.postForObject("http://192.168.1.13:6086/subtracStock", list, boolean.class);
+        if (aBoolean){
+            return true;
+        }
+        return false;
+    }
+
+
+    /**
+     * 远程调用  查询商品的详情信息 并获取到商品的库存数量
+     * @return
+     */
+    public   Integer  selectSku(Long productId){
+        PmsProduct pmsProduct = restTemplate.postForObject("http://192.168.1.13:6086/productdatailed", productId, PmsProduct.class);
+        Integer stock = pmsProduct.getStock();
+        return stock;
+    }
+
 }
