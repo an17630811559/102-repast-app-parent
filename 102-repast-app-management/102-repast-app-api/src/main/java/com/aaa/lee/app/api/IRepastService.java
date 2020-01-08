@@ -2,11 +2,9 @@ package com.aaa.lee.app.api;
 
 import com.aaa.lee.app.fallback.RepastFallback;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.Map;
 
 /**
@@ -18,7 +16,6 @@ import java.util.Map;
  *      但是如果是包装类型，只能传递一个，也必须要用@RequestBody
  **/
 @FeignClient(value = "order-interface-provider", fallbackFactory = RepastFallback.class)
-@RequestMapping("/provider")
 public interface IRepastService {
 
 
@@ -33,10 +30,37 @@ public interface IRepastService {
     @PostMapping("/checkOut")
     Map<Object,Object>  checkOutCart(@RequestParam("token") String token,@RequestParam("json") String json);
 
+    /**
+     * @author zws
+     * @description
+     *     支付
+     * @date create in 13:10 2019/12/24
+     * @param
+     * @return
+    */
+    @PostMapping("/pay")
+    Map<Object, Object> selectByPrimaryKey(@RequestParam("token") String token,@RequestParam("json") Long id);
 
-    @PostMapping("/selectMyOrder")
-    String selectAllOrder(@RequestParam("token") String token,@RequestBody Map<String, Object> map);
+    /**
+     * @Author zws
+     * @Description
+     *      微信支付接口
+     * @Param [orderSn, openid, amount]
+     * @Return java.util.Map<java.lang.String,java.lang.Object>
+     * @Date 2019/12/6
+     */
+    @GetMapping("/WMpay")
+    Map<String, Object> WMpay(@RequestParam("orderSn")String orderSn, @RequestParam(name = "openid") String openid, @RequestParam(name = "amount") BigDecimal amount);
 
-    @PostMapping("/selectMyOrderById")
-    String selectByOrderId(@RequestParam("token") String token,@RequestBody Map<String, Object> map);
+    /**
+     * @Author zws
+     * @Description
+     *      微信支付回调接口
+     * @Param []
+     * @Return void
+     * @Date 2019/12/6
+     */
+    @PostMapping("/wxNotify")
+    void wxNotify() throws Exception;
+
 }

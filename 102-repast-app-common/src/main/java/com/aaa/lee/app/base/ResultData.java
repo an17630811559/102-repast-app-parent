@@ -2,6 +2,8 @@ package com.aaa.lee.app.base;
 
 import lombok.*;
 
+import java.io.Serializable;
+
 /**
  * @Company AAA软件教育
  * @Author Seven Lee
@@ -26,7 +28,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class ResultData<T> {
+public class ResultData<T> implements Serializable {
 
     private String code;
     private String msg;
