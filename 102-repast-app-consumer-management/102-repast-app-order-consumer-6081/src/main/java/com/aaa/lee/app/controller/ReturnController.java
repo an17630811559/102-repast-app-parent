@@ -1,6 +1,5 @@
 package com.aaa.lee.app.controller;
 
-import com.aaa.lee.app.annotaion.ReturnLogAnnotaion;
 import com.aaa.lee.app.api.IRepastService;
 import com.aaa.lee.app.base.BaseController;
 import com.aaa.lee.app.base.ResultData;

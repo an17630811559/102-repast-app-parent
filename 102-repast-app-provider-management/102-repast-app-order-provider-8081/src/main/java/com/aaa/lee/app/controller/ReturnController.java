@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import java.util.Map;
 
 /**
@@ -65,7 +66,7 @@ public class ReturnController {
     public Map<String, Object> agree(@RequestParam("token") String token, @RequestParam("json")String json) {
 
             Map<String, Object> map = JSON.parseObject(json);
-            return omsOrderReturnApplyService.agree(map);
+            return /*omsOrderReturnApplyService.agree(map)*/ null;
 
     }
 

@@ -27,6 +27,7 @@ import java.util.Map;
 //事务
 @Transactional
 public class OmsOrderReturnApplyService extends BaseService<OmsOrderReturnApply> {
+
     @Autowired
     private OmsOrderReturnApplyMapper omsOrderReturnApplyMapper;
     @Autowired
@@ -64,7 +65,7 @@ public class OmsOrderReturnApplyService extends BaseService<OmsOrderReturnApply>
         //      申请状态
         String status = null == map.get("status") ? "" : map.get("status").toString();
 
-        Map<String, String> map2 = new HashMap<>();
+        Map<String, String> map2 = new HashMap<String, String>();
 
         map2.put("order_id", order_id);
         map2.put("product_id", product_id);
@@ -132,23 +133,7 @@ public class OmsOrderReturnApplyService extends BaseService<OmsOrderReturnApply>
 
     }
 
-    /**
-     * 同意退款？
-     *
-     * @return
-     */
-    @Scheduled(cron = "0/60 * * * * *")
-    public Map<String, Object> agree(Map<String, Object> map) {
-        Map<String, Object> info = new HashMap<>();
 
-
-        //        如果为退款中则把商家地址、电话、收货人返回给前台
-        if (Long.valueOf(getValue(map).get("status")) == 1) {
-            info = info(map);
-
-        }
-        return info;
-    }
 
     /**
      * 商家地址、电话、收货人返回给前台

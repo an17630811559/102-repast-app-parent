@@ -8,7 +8,9 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author AAA QY102 awb
@@ -71,4 +73,21 @@ public class ScheduledTask {
             }
         }
     }
+
+    /**
+     * 同意退款？
+     *
+     * @return
+     */
+   /* @Scheduled(cron = "0/60 * * * * *")
+    public Map<String, Object> agree(Map<String, Object> map) {
+        Map<String, Object> info = new HashMap<String, Object>();
+
+        //        如果为退款中则把商家地址、电话、收货人返回给前台
+        if (Long.valueOf(getValue(map).get("status")) == 1) {
+            info = info(map);
+
+        }
+        return info;
+    }*/
 }

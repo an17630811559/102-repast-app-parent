@@ -25,7 +25,7 @@ public class OmsOrderOperateHistoryService extends BaseService<OmsOrderOperateHi
     }
 
     public Map<String,Object>up(OmsOrderOperateHistory omsOrderOperateHistory){
-        HashMap<String, Object> map = new HashMap<>();
+        HashMap<String, Object> map = new HashMap<String, Object>();
         try {
             Integer i = super.update(omsOrderOperateHistory);
             map.put("result",i);

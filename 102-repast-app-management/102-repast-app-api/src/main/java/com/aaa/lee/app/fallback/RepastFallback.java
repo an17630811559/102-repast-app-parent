@@ -4,7 +4,6 @@ import com.aaa.lee.app.api.IRepastService;
 import feign.hystrix.FallbackFactory;
 import org.springframework.stereotype.Component;
 
-import java.math.BigDecimal;
 import java.util.Map;
 
 /**
@@ -28,21 +27,30 @@ public class RepastFallback implements FallbackFactory<IRepastService> {
             }
 
             @Override
-            public Map<Object, Object> selectByPrimaryKey(String token, Long id) {
-                System.out.println("支付熔断数据");
+            public String selectAllOrder(String token, Map<String, Object> map) {
                 return null;
             }
 
             @Override
-            public Map<String, Object> WMpay(String orderSn, String openid, BigDecimal amount) {
-                System.out.println("测试微信支付");
+            public String selectByOrderId(String token, Map<String, Object> map) {
                 return null;
             }
 
             @Override
-            public void wxNotify() throws Exception {
-                System.out.println("测试微信支付回调");
+            public Map<String, Object> state(String token, String json) {
+                return null;
             }
+
+            @Override
+            public Map<String, Object> agree(String token, String json) {
+                return null;
+            }
+
+            @Override
+            public Map<String, Object> refund(String token, String json) {
+                return null;
+            }
+
         };
         return repastService;
     }

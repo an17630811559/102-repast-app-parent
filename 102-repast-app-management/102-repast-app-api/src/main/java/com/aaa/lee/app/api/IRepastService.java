@@ -2,6 +2,7 @@ package com.aaa.lee.app.api;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Map;
@@ -28,6 +29,12 @@ public interface IRepastService {
     */
     @PostMapping("/checkOut")
     Map<Object,Object> checkOutCart(@RequestParam("token") String token, @RequestParam("json")String json);
+
+    @PostMapping("/selectMyOrder")
+    String selectAllOrder(@RequestParam("token") String token,@RequestBody Map<String, Object> map);
+
+    @PostMapping("/selectMyOrderById")
+    public String selectByOrderId(@RequestParam("token") String token, @RequestBody Map<String, Object> map);
 
     /**
      * 提交退货申请
