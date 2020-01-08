@@ -1,10 +1,7 @@
 package com.aaa.lee.app.api;
 
-import com.aaa.lee.app.fallback.RepastFallback;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Map;
@@ -17,26 +14,42 @@ import java.util.Map;
  *      如果是简单类型传递数据可以传递多个，但是每一个必须要用@RequestParam
  *      但是如果是包装类型，只能传递一个，也必须要用@RequestBody
  **/
-@FeignClient(value = "order-interface-provider", fallbackFactory = RepastFallback.class)
-@RequestMapping("/provider")
+@FeignClient(value = "userinfo-interface-provider")//, fallbackFactory = RepastFallback.class)
 public interface IRepastService {
 
 
     /**
      * @author awb
      * @description
-     *      结算
-     * @date create in 14:27 2019/12/20
+     *          结算
+     * @date create in 11:04 2019/12/20
      * @param
      * @return
     */
     @PostMapping("/checkOut")
-    Map<Object,Object>  checkOutCart(@RequestParam("token") String token,@RequestParam("json") String json);
+    Map<Object,Object> checkOutCart(@RequestParam("token") String token, @RequestParam("json")String json);
 
+    /**
+     * 提交退货申请
+     *
+     * @return
+     */
+    @PostMapping("/state")
+    public Map<String, Object> state(@RequestParam("token") String token, @RequestParam("json")String json);
 
-    @PostMapping("/selectMyOrder")
-    String selectAllOrder(@RequestParam("token") String token,@RequestBody Map<String, Object> map);
+    /**
+     * 同意退款？
+     * @return
+     */
+    @PostMapping("/agree")
+    public Map<String, Object> agree(@RequestParam("token") String token, @RequestParam("json")String json);
 
-    @PostMapping("/selectMyOrderById")
-    String selectByOrderId(@RequestParam("token") String token,@RequestBody Map<String, Object> map);
+    /**
+     * 商家确认收货后退钱
+     *
+     * @return
+     */
+    @PostMapping("/refund")
+    public Map<String, Object> refund(@RequestParam("token") String token, @RequestParam("json")String json);
+
 }
