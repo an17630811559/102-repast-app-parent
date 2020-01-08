@@ -97,6 +97,47 @@ public class BaseController {
         return resultData;
     }
 
+    /**
+     * 添加购物车成功
+     * @return
+     */
+    protected ResultData addCart() {
+        ResultData resultData = new ResultData();
+        resultData.setCode(LoginStatus.ADD_CART.getCode());
+        resultData.setMsg(LoginStatus.ADD_CART.getMsg());
+        return resultData;
+    }
+    /**
+     * 商品库存不足
+     * @return
+     */
+    protected ResultData productSku() {
+        ResultData resultData = new ResultData();
+        resultData.setCode(LoginStatus.SKU_NOT_CART.getCode());
+        resultData.setMsg(LoginStatus.SKU_NOT_CART.getMsg());
+        return resultData;
+    }
+    /**
+     * 操作成功
+     * @return
+     */
+    protected ResultData caozuo() {
+        ResultData resultData = new ResultData();
+        resultData.setCode(StatusEnum.SUCCESS.getCode());
+        resultData.setMsg(StatusEnum.SUCCESS.getMsg());
+        return resultData;
+    }
+    /**
+     * 操作失败
+     * @return
+     */
+    protected ResultData shibai() {
+        ResultData resultData = new ResultData();
+        resultData.setCode(StatusEnum.FAILED.getCode());
+        resultData.setMsg(StatusEnum.FAILED.getMsg());
+        return resultData;
+    }
+
     // TODO 暂时未完成，需要什么方法自己添加
 
 

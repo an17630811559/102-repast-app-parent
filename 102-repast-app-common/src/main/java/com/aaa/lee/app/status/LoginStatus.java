@@ -18,6 +18,7 @@ public enum  LoginStatus {
     ADD_CART("300","添加购物车成功"),
     ADD_NOT_CART("500","添加购物车失败"),
     SKU_NOT_CART("501","你购买的商品库存不足"),
+    CART_NOT_SHUJU("503","购物车没有这条数据"),
     USER_HAS_NOT_PERMISSION("406", "用户没有登录权限");
 
 
